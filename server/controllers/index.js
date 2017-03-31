@@ -220,10 +220,10 @@ const searchDog = (req, res) => {
     if (!doc) {
       return res.json({ error: 'Dog not found' });
     }
-    doc.age++;
+    var newAge = doc.age++;
     const savePromise = doc.save();
-    savePromise.then(() => res.json({ name: doc.name, breed: doc.breed, age: doc.age }));
-    savePromise.catch((err) => res.json({ err }));
+    savePromise.then(() => res.json({ name: doc.name, breed: doc.breed, age: newAge }));
+    savePromise.catch((erro) => res.json({ erro }));
   });
 };
 
